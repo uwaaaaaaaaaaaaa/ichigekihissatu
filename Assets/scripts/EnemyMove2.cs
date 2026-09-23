@@ -1,10 +1,10 @@
 using UnityEngine;
 
-public class EnemyMove : MonoBehaviour
+//Lv2：ついてくる敵
+public class EnemyMove2: MonoBehaviour
 {
     [Header("設定")]
     [SerializeField] private float moveSpeed = 3f;
-    [SerializeField] private float attackCharge = 2f;
 
     Transform player;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -21,7 +21,19 @@ public class EnemyMove : MonoBehaviour
     void Update()
     {
         if(player == null) { return; }
-        Vector2 direction = ((Vector2)player.position - (Vector2)transform.position).normalized;
-        transform.position += (Vector3)direction * moveSpeed * Time.deltaTime;
+        if (GameDirector.Instance.isGaming)
+        {
+            Vector2 direction = ((Vector2)player.position - (Vector2)transform.position).normalized;
+            transform.position += (Vector3)direction * moveSpeed * Time.deltaTime;
+        }
+    }
+
+    //爆破オブジェクトに触れると消える
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.collider.CompareTag("Explosion"))
+        {
+            Destroy(gameObject);
+        }
     }
 }

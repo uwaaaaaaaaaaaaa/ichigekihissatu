@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -34,19 +35,26 @@ public class PlayerMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        move = moveAction.action.ReadValue<Vector2>();
-        transform.position += Vector3.right * move.x * moveSpeed * Time.deltaTime;
+        if (GameDirector.Instance.isGaming)
+        {
+            move = moveAction.action.ReadValue<Vector2>();
+            transform.position += Vector3.right * move.x * moveSpeed * Time.deltaTime;
 
-        if (isGround && jumpAction.action.WasPressedThisFrame())
-        {
-            Debug.Log("ジャンプ");
-            Jump();
-        }
-        else if(!isGround && jumpAction.action.WasPressedThisFrame() && (currentryAirDodge < maxAirDodge))
-        {
-            Debug.Log("空中回避！");
-            StartCoroutine(AirDodge());
-            currentryAirDodge++;
+            if (isGround && jumpAction.action.WasPressedThisFrame())
+            {
+                Debug.Log("ジャンプ");
+                Jump();
+            }
+            else if (!isGround && jumpAction.action.WasPressedThisFrame() && (currentryAirDodge < maxAirDodge))
+            {
+                Debug.Log("空中回避");
+                StartCoroutine(AirDodge());
+                currentryAirDodge++;
+            }
+            if (!GameDirector.Instance.isLiving)
+            {
+                Instantiate(ExplosionEffect);
+            }
         }
     }
 
@@ -58,9 +66,22 @@ public class PlayerMove : MonoBehaviour
             isGround = true;
             currentryAirDodge = 0;
         }
+        //ゲームオーバー用
         if (collision.gameObject.CompareTag("Enemy") || collision.gameObject.CompareTag("Attack"))
         {
-            
+            Instantiate(ExplosionEffect);
+            GameDirector.Restart();
+        }
+        //爆破オブジェクトに触れると消える
+        if (collision.gameObject.CompareTag("Explosion"))
+        {
+            Destroy(gameObject);
+        }
+        //クリア判定のためにボスは別扱い
+        if (collision.gameObject.CompareTag("Boss"))
+        {
+            Instantiate(ExplosionEffect);
+            GameDirector.Clear();
         }
     }
 
@@ -87,43 +108,7 @@ public class PlayerMove : MonoBehaviour
         rb.gravityScale = defaultGravity;
     }
 
-    //自爆演出用（ゲームオーバー）
-    IEnumerator Explosion()
-    {
-        Instantiate(ExplosionEffect);
-        yield return new WaitForSeconds(1);
-        Destroy(ExplosionEffect);
-    }
+    
+
+
 }
-
-/*
- IEnumerator Explosion()
-{
-    // 爆発を生成
-    GameObject explosion = Instantiate(
-        ExplosionEffect,
-        transform.position,
-        Quaternion.identity
-    );
-
-    float duration = 1f;
-    float timer = 0f;
-
-    Vector3 startScale = explosion.transform.localScale;
-
-    // 1秒かけて小さくする
-    while (timer < duration)
-    {
-        timer += Time.deltaTime;
-
-        float t = timer / duration;
-
-        explosion.transform.localScale =
-            Vector3.Lerp(startScale, Vector3.zero, t);
-
-        yield return null;
-    }
-
-    Destroy(explosion);
-}
- */
