@@ -10,7 +10,7 @@ public class PlayerMove : MonoBehaviour
     [Header("参照")]
     [SerializeField] private InputActionReference moveAction;       //インプットシステムのアタッチ
     [SerializeField] private InputActionReference jumpAction;
-    [SerializeField] private GameDirector GameDirector;
+    [SerializeField] private GameDirector gameDirector;
     [SerializeField] private GameObject ExplosionEffect;
 
     [Header("変数")]
@@ -30,6 +30,8 @@ public class PlayerMove : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         currentryAirDodge = 0;
         defaultGravity = rb.gravityScale;
+        //生成されたときにGameDirectorを認識する用
+        gameDirector = FindFirstObjectByType<GameDirector>();
     }
 
     // Update is called once per frame
@@ -69,8 +71,8 @@ public class PlayerMove : MonoBehaviour
         //ゲームオーバー用
         if (collision.gameObject.CompareTag("Enemy") || collision.gameObject.CompareTag("Attack"))
         {
+            gameDirector.Restart();
             Instantiate(ExplosionEffect);
-            GameDirector.Restart();
         }
         //爆破オブジェクトに触れると消える
         if (collision.gameObject.CompareTag("Explosion"))
@@ -81,7 +83,7 @@ public class PlayerMove : MonoBehaviour
         if (collision.gameObject.CompareTag("Boss"))
         {
             Instantiate(ExplosionEffect);
-            GameDirector.Clear();
+            gameDirector.Clear();
         }
     }
 

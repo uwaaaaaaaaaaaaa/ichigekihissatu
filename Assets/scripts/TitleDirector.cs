@@ -12,12 +12,17 @@ public class TitleDirector : MonoBehaviour
     [SerializeField] private Slider VolumeSliderBGM;
     [SerializeField] private Slider VolumeSliderSE;
     [SerializeField] private Text StoryButtonText;
+
+    //何回もisStoryを取得しなくてもいいようにするローカル変数
+    int isStory;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         //表示の初期化
         SettingPanel.SetActive(false);
         StagePanel.SetActive(false);
+        //変数の初期化
+        isStory = PlayerPrefs.GetInt("isStory", 1);
         //Sliderのボリュームの初期化
         VolumeSliderBGM.value = PlayerPrefs.GetFloat("BGMvolume", 1.0f);
         VolumeSliderSE.value = PlayerPrefs.GetFloat("SEvolume", 1.0f);
@@ -29,7 +34,7 @@ public class TitleDirector : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(PlayerPrefs.GetInt("isStory" , 1) == 1)
+        if(isStory == 1)
         {
             StoryButtonText.text = "ON";
         }
@@ -55,7 +60,7 @@ public class TitleDirector : MonoBehaviour
     //ゲームシーンに移る関数（ボタンから呼び出し）
     public void GameStart()
     {
-        PlayerPrefs.SetInt("StageNum", 1);
+        DontDestroyDirector.Instance.nowStage = 1;
         PlayerPrefs.Save();
         SceneManager.LoadScene("GameScene");
     }
@@ -63,7 +68,7 @@ public class TitleDirector : MonoBehaviour
     //ステージ指定でゲームシーンに移る関数
     public void GameStartWithStageID(int StageNum)
     {
-        PlayerPrefs.SetInt("StageNum", StageNum);
+        DontDestroyDirector.Instance.nowStage = StageNum;
         PlayerPrefs.Save();
         SceneManager.LoadScene("GameScene");
     }
@@ -85,11 +90,14 @@ public class TitleDirector : MonoBehaviour
     {
         if (PlayerPrefs.GetInt("isStory", 1) == 1) {
             PlayerPrefs.SetInt("isStory", 0);
+            PlayerPrefs.Save();
+            isStory = 0;
         }
         else
         {
             PlayerPrefs.SetInt("isStory", 1);
+            PlayerPrefs.Save();
+            isStory = 1;
         }
-        PlayerPrefs.Save();
     }
 }

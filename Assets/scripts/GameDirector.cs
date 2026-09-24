@@ -7,6 +7,13 @@ using UnityEditor;
 
 public class GameDirector : MonoBehaviour
 {
+    //どこからでもアクセスできるようにしておく
+    public static GameDirector Instance { get; private set; }
+    private void Awake()
+    {
+        Instance = this;
+    }
+
     [Header("キャラクターのデータベース")]
     [SerializeField] private CharacterDatabase characterDatabase;
 
@@ -23,6 +30,7 @@ public class GameDirector : MonoBehaviour
     [SerializeField] private Image leftCharacterImage;
     [SerializeField] private Image rightCharactorImage;
     [SerializeField] private Text TalkText;
+    [SerializeField] private CameraController cameraController;
 
     [Header("クリア後の評価表示")]
     [SerializeField] private Sprite[] RankSprites;
@@ -34,65 +42,21 @@ public class GameDirector : MonoBehaviour
     public bool isGaming = true;
     public bool isLiving = true;
 
-    //どこからでもアクセスできるようにしておく
-    public static GameDirector Instance { get; private set; }
     //死んだ数をカウントしておく変数
     private int deathCount;
     //制限時間用の変数
     private float countDownTimer = 0;
-    //ステージ生成の中心を取得するTransform
-    private Transform stageCenterPoint;
 
-    //インスタンス化する
-    private void Awake()
+
+    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    void Start()
     {
-        if (Instance == null)
-        {
-            Instance = this;
-            DontDestroyOnLoad(gameObject);
+        //前のステージ数の取得と変わっていた時のデス数の初期化
+        int lastStage = DontDestroyDirector.Instance.nowStage;
+        if(lastStage != DontDestroyDirector.Instance.lastStage) {
+            DontDestroyDirector.Instance.deathCount = 0;
+            DontDestroyDirector.Instance.lastStage = lastStage;
         }
-        else
-        {
-            Destroy(gameObject);
-        }
-    }
-
-    //シーン読み込みイベントの登録
-    private void OnEnable()
-    {
-        SceneManager.sceneLoaded += OnSceneLoaded;
-    }
-
-    //イベント解除
-    private void OnDisable()
-    {
-        SceneManager.sceneLoaded -= OnSceneLoaded;
-    }
-
-    //シーンが切り替わったときに自動で呼ばれる関数
-    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
-    {
-        Time.timeScale = 1.0f;
-        //読み込まれたシーンの名前がTitleSceneだったら自分を削除する
-        if (scene.name == "TitleScene")
-        {
-            Destroy(gameObject);
-            return;
-        }
-
-        //GameScene が読み込まれた時の初期化処理
-        if (scene.name == "GameScene")
-        {
-            InitGameScene();
-        }
-    }
-
-    //void Startに変わってシーンロード時の初期化をしてくれる
-    private void InitGameScene()
-    {
-        //ステージ生成の中心をGameObjectとして取得
-        GameObject stageCenterObject = GameObject.FindGameObjectWithTag("StagePoint");
-        stageCenterPoint = stageCenterObject.transform;
         //表示の初期化
         PausePanel.SetActive(false);
         ClearPanel.SetActive(false);
@@ -103,16 +67,14 @@ public class GameDirector : MonoBehaviour
         //変数の初期化
         isGaming = false;
         isLiving = true;
-        StageGenerate(PlayerPrefs.GetInt("StageNum", 1));
-        if(PlayerPrefs.GetInt("isTalking", 1) == 1) { 
+        StageGenerate(DontDestroyDirector.Instance.nowStage);
+        deathCount = DontDestroyDirector.Instance.deathCount;
+        if(PlayerPrefs.GetInt("isStory", 1) == 1) { 
             StartCoroutine(TalkingPhase());
-        }
-    }
-
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        deathCount = 0;
+        }else
+         {
+                isGaming = true;
+         }
     }
 
     // Update is called once per frame
@@ -157,7 +119,7 @@ public class GameDirector : MonoBehaviour
     //リスタート用のコルーチン開始用（Playerから呼び出し）
     public void Restart()
     {
-        deathCount++;
+        DontDestroyDirector.Instance.deathCount++;
         StartCoroutine(ReStartCoroutine());
     }
 
@@ -180,8 +142,8 @@ public class GameDirector : MonoBehaviour
         {
             RankImage.sprite = RankSprites[4];
         }
-        int stageNum = PlayerPrefs.GetInt("StageNum", 1);
-        if (deathCount == 1 && stageNum == 1 && PlayerPrefs.GetInt("isTalking", 1) == 1)
+        int stageNum = DontDestroyDirector.Instance.nowStage;
+        if (deathCount == 1 && stageNum == 1 && PlayerPrefs.GetInt("isStory", 1) == 1)
         {
             StartCoroutine(FirstDeathTalk());
         }
@@ -192,16 +154,12 @@ public class GameDirector : MonoBehaviour
     IEnumerator ReStartCoroutine()
     {
         //初めて死んだときは会話を入れる
-        int stageNum = PlayerPrefs.GetInt("StageNum", 1);
-        if (deathCount == 1 && stageNum == 1 && PlayerPrefs.GetInt("isTalking", 1) == 1)
+        int stageNum = DontDestroyDirector.Instance.nowStage;
+        if (deathCount == 0 && stageNum == 1 && PlayerPrefs.GetInt("isStory", 1) == 1)
         {
             isGaming = false;
             TalkPanel.SetActive(true);
             yield return StartCoroutine(FirstDeathTalk());
-            yield return StartCoroutine(GenerateTalk("それじゃあ時間戻してやるからいってこい！", 2, "Goddess", "smile"));
-            TalkPanel.SetActive(true);
-            TalkPanel.SetActive(false);
-            yield return new WaitForSeconds(0.4f);
             SceneManager.LoadScene("GameScene");
         }
         else { 
@@ -223,15 +181,16 @@ public class GameDirector : MonoBehaviour
         yield return StartCoroutine(GenerateTalk("時間の加護もやるからそれで頑張って★", 2, "Goddess", "smile"));
         yield return StartCoroutine(GenerateTalk("まあお前の信仰度じゃし達成できなきゃ強制爆破とかついたりしてなガハハ！", 2, "Goddess", "smile"));
         yield return StartCoroutine(GenerateTalk("（村のやつらはこんな適当女神を信仰してるのか...）", 1, "Player", "confused"));
+        yield return StartCoroutine(GenerateTalk("それじゃあ時間戻してやるからもいっちょいってこい！", 2, "Goddess", "smile"));
         TalkPanel.SetActive(false);
     }
 
     //クリア後の次のステージへ行く処理
     public void NextStage()
     {
-        int nextStage = PlayerPrefs.GetInt("StageNum", 1) + 1;
+        int nextStage = DontDestroyDirector.Instance.nowStage + 1;
         if(nextStage < 6) { 
-            PlayerPrefs.SetInt("StageNum", nextStage);
+            DontDestroyDirector.Instance.nowStage = nextStage;
             deathCount = 0;
             SceneManager.LoadScene("GameScene");
         }
@@ -254,24 +213,27 @@ public class GameDirector : MonoBehaviour
         switch (stageNum)
         {
             case 1:
+                cameraController.CameraSetting(0,0,0,0);
                 countDownTimer = 20f;
-                Instantiate(stagePrefabs[stageNum-1], stageCenterPoint.transform.position, Quaternion.identity);
+                Instantiate(stagePrefabs[stageNum-1]);
                 break;
             case 2:
+                cameraController.CameraSetting(0,5,0,0);
                 countDownTimer = 10f;
-                Instantiate(stagePrefabs[stageNum-1], stageCenterPoint.transform.position, Quaternion.identity);
+                Instantiate(stagePrefabs[stageNum-1]);
                 break;
             case 3:
+                cameraController.CameraSetting(0,5,0,-5);
                 countDownTimer = 15f;
-                Instantiate(stagePrefabs[stageNum-1], stageCenterPoint.transform.position, Quaternion.identity);
+                Instantiate(stagePrefabs[stageNum - 1]);
                 break;
             case 4:
                 countDownTimer = 20f;
-                Instantiate(stagePrefabs[stageNum-1], stageCenterPoint.transform.position, Quaternion.identity);
+                Instantiate(stagePrefabs[stageNum - 1]);
                 break;
             case 5:
                 countDownTimer = 20f;
-                Instantiate(stagePrefabs[stageNum-1], stageCenterPoint.transform.position, Quaternion.identity);
+                Instantiate(stagePrefabs[stageNum - 1]);
                 break;
             default:
                 Debug.LogError("そんなステージ数うちにはないよ！");
@@ -310,10 +272,10 @@ public class GameDirector : MonoBehaviour
                 break;
             default:
                 Debug.LogError($"'{charactorPosition}'は無効な位置やんね");
-                yield break;
+                break;
         }
-
-        yield return new WaitUntil(() => Keyboard.current != null && Keyboard.current.anyKey.wasPressedThisFrame);
+        yield return new WaitUntil(() => Keyboard.current != null && Keyboard.current.spaceKey.wasPressedThisFrame);
+        yield return new WaitUntil(() => Keyboard.current != null && Keyboard.current.spaceKey.wasReleasedThisFrame);
         TalkBox.SetActive(false);
         leftCharacterImage.gameObject.SetActive(false);
         rightCharactorImage.gameObject.SetActive(false);
@@ -322,13 +284,14 @@ public class GameDirector : MonoBehaviour
     //ステージ前にする会話
     IEnumerator TalkingPhase()
     {
-        int stageNum = PlayerPrefs.GetInt("StageNum", 1);
+        int stageNum = DontDestroyDirector.Instance.nowStage;
         isGaming = false;
         TalkPanel.SetActive(true);
         switch (stageNum)
         {
             
             case 1:
+                if(deathCount == 0) { 
                 yield return StartCoroutine(GenerateTalk("急に戦場に出されたから軽装なんだけど..." , 1, "Player", "confused"));
                 yield return StartCoroutine(GenerateTalk("こんなんでどうやって戦えばいいんだ..." , 1, "Player", "confused"));
                 yield return StartCoroutine(GenerateTalk("ふっふっふ...わしが加護を授けてやろう..." , 2, "Goddess", "mystery"));
@@ -347,20 +310,25 @@ public class GameDirector : MonoBehaviour
                 yield return StartCoroutine(GenerateTalk("オートカウンターってことは体当たりでも一撃必殺！？" , 1, "Player", "smile"));
                 yield return StartCoroutine(GenerateTalk("それじゃあ早速いってきます！" , 1, "Player", "smile"));
                 yield return StartCoroutine(GenerateTalk("うむ！村民が減らんうちに早めにな！" , 2, "Goddess", "smile"));
+                }
                 break;
             case 2:
+                if(deathCount == 0) { 
                 yield return StartCoroutine(GenerateTalk("たおしたところで自分も爆発するから勝った気がしない..." , 1, "Player", "confused"));
                 yield return StartCoroutine(GenerateTalk("まあ...なんじゃその..." , 2, "Goddess", "confused"));
                 yield return StartCoroutine(GenerateTalk("あと４体がんばれ！" , 2, "Goddess", "smile"));
                 yield return StartCoroutine(GenerateTalk("クソッ！さっさと済ませて家でゴロゴロしてやる！" , 1, "Player", "angry"));
-                yield return StartCoroutine(GenerateTalk("（これってわしが悪いんかの...）" , 2, "Goddess", "confused"));
+                yield return StartCoroutine(GenerateTalk("ちなみに次の敵は追いかけてくるから気を付けるんじゃぞ" , 2, "Goddess", "smile"));
+                }
                 break;
             case 5:
+                if(deathCount == 0) { 
                 yield return StartCoroutine(GenerateTalk("いや～長かった旅もここでおしまいじゃのう" , 2, "Goddess", "smile"));
                 yield return StartCoroutine(GenerateTalk("お前もその力をなんだかんだ使いこなせるようになって..." , 2, "Goddess", "smile"));
                 yield return StartCoroutine(GenerateTalk("おかげさまでね！" , 1, "Player", "angry"));
                 yield return StartCoroutine(GenerateTalk("ちゃんと信仰するようになったらもっと使えるようになるかもな～？" , 2, "Goddess", "smile"));
                 yield return StartCoroutine(GenerateTalk("うるせー！" , 1, "Player", "angry"));
+                }
                 break;
         }
        TalkPanel.SetActive(false);

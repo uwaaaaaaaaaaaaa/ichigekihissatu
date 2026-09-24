@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef66e18a90010a04bbdd08065f9d60e1, type: 3}
+  m_Name: NewCaracterData 1
+  m_EditorClassIdentifier: Assembly-CSharp::CharacterData
+  characterName: Goddess
+  expressions:
+  - expressionName: smile
+    sprite: {fileID: 785521257, guid: 6b72b55ecbd0e4449804d77a3edfd52d, type: 3}
+  - expressionName: suprised
+    sprite: {fileID: -1968521695, guid: 6b72b55ecbd0e4449804d77a3edfd52d, type: 3}
+  - expressionName: angry
+    sprite: {fileID: 355218553, guid: 6b72b55ecbd0e4449804d77a3edfd52d, type: 3}
+  - expressionName: confused
+    sprite: {fileID: -1754386540, guid: 6b72b55ecbd0e4449804d77a3edfd52d, type: 3}
+  - expressionName: mystery
+    sprite: {fileID: 1231157469, guid: 6b72b55ecbd0e4449804d77a3edfd52d, type: 3}

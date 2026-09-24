@@ -194,6 +194,53 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 44882591}
   m_CullTransparentMesh: 1
+--- !u!1 &48055011
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 48055013}
+  - component: {fileID: 48055012}
+  m_Layer: 0
+  m_Name: DontDestroyDirector
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &48055012
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 48055011}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ae929683617f6a419426b714599f1ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DontDestroyDirector
+  deathCount: 0
+  nowStage: 0
+  lastStage: 0
+--- !u!4 &48055013
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 48055011}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.50145, y: -1.59521, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &70982782
 GameObject:
   m_ObjectHideFlags: 0
@@ -593,7 +640,7 @@ MonoBehaviour:
   StagePanel: {fileID: 1361935909}
   VolumeSliderBGM: {fileID: 1603509019}
   VolumeSliderSE: {fileID: 1996707134}
-  StoryButtonText: {fileID: 0}
+  StoryButtonText: {fileID: 959404850}
 --- !u!4 &225849109
 Transform:
   m_ObjectHideFlags: 0
@@ -3249,7 +3296,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1572013739}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 225849108}
+        m_TargetAssemblyTypeName: TitleDirector, Assembly-CSharp
+        m_MethodName: isStorySetting
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1572013739
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4184,3 +4243,4 @@ SceneRoots:
   - {fileID: 1234530727}
   - {fileID: 617771711}
   - {fileID: 225849109}
+  - {fileID: 48055013}
