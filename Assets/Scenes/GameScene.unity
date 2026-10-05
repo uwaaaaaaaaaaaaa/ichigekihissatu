@@ -340,7 +340,7 @@ MonoBehaviour:
   - {fileID: -149060111, guid: 48d365e7952a3d84982cba0d099a0dc3, type: 3}
   stagePrefabs:
   - {fileID: 582419826018860142, guid: 02275e1f84b36af43b05c390aaae2210, type: 3}
-  - {fileID: 582419826018860142, guid: 02275e1f84b36af43b05c390aaae2210, type: 3}
+  - {fileID: 8021857429149576427, guid: d465dfede0d54c44ba1afac9e3f872b9, type: 3}
   - {fileID: 582419826018860142, guid: 02275e1f84b36af43b05c390aaae2210, type: 3}
   - {fileID: 582419826018860142, guid: 02275e1f84b36af43b05c390aaae2210, type: 3}
   - {fileID: 582419826018860142, guid: 02275e1f84b36af43b05c390aaae2210, type: 3}

@@ -96,6 +96,7 @@ public class GameDirector : MonoBehaviour
             if(countDownTimer < 0)
             {
                 isLiving = false;
+                Restart();
             }
         }
     }
@@ -165,7 +166,7 @@ public class GameDirector : MonoBehaviour
         else { 
             yield return new WaitForSeconds(1f);
             SceneManager.LoadScene("GameScene");
-        yield break;
+            yield break;
         }
     }
 
@@ -320,6 +321,11 @@ public class GameDirector : MonoBehaviour
                 yield return StartCoroutine(GenerateTalk("クソッ！さっさと済ませて家でゴロゴロしてやる！" , 1, "Player", "angry"));
                 yield return StartCoroutine(GenerateTalk("ちなみに次の敵は追いかけてくるから気を付けるんじゃぞ" , 2, "Goddess", "smile"));
                 }
+                break;
+                case 3:
+                yield return StartCoroutine(GenerateTalk("よくやっておるのぉ" , 2, "Goddess", "smile"));
+                yield return StartCoroutine(GenerateTalk("もうなんか爆発するの慣れてきたよ..." , 1, "Player", "confused"));
+                yield return StartCoroutine(GenerateTalk("次はステージに" , 2, "Goddess", "smile"));
                 break;
             case 5:
                 if(deathCount == 0) { 

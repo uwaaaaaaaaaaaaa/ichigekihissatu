@@ -7,6 +7,12 @@ public class CameraController : MonoBehaviour
     //プレイヤーの位置取得用
     private GameObject PlayerObj;
 
+    //最大or最小のカメラの移動範囲を設定するためのオブジェクト
+    private GameObject minXObj;
+    private GameObject maxXObj;
+    private GameObject minYObj;
+    private GameObject maxYObj;
+
     //カメラの移動範囲変数
     private float minX;
     private float maxX;
@@ -23,10 +29,16 @@ public class CameraController : MonoBehaviour
     void Start()
     {
         PlayerObj = GameObject.FindGameObjectWithTag("Player");
+        minXObj = GameObject.FindGameObjectWithTag("minX");
+        maxXObj = GameObject.FindGameObjectWithTag("maxX");
+        minYObj = GameObject.FindGameObjectWithTag("minY");
+        maxYObj = GameObject.FindGameObjectWithTag("maxY");
         if(minX == 0)
         {
-            minX = minY = -10;
-            maxX = maxY = 10;
+            minX = minXObj.transform.position.x;
+            minY = minYObj.transform.position.y;
+            maxX = maxXObj.transform.position.x;
+            maxY = maxYObj.transform.position.y;
         }
     }
 

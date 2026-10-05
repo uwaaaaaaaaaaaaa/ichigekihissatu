@@ -9,6 +9,10 @@ TagManager:
   - Attack
   - Explosion
   - Boss
+  - minX
+  - maxX
+  - minY
+  - maxY
   layers:
   - Default
   - TransparentFX
