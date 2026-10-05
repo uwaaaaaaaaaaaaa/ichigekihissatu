@@ -341,9 +341,9 @@ MonoBehaviour:
   stagePrefabs:
   - {fileID: 582419826018860142, guid: 02275e1f84b36af43b05c390aaae2210, type: 3}
   - {fileID: 8021857429149576427, guid: d465dfede0d54c44ba1afac9e3f872b9, type: 3}
-  - {fileID: 582419826018860142, guid: 02275e1f84b36af43b05c390aaae2210, type: 3}
-  - {fileID: 582419826018860142, guid: 02275e1f84b36af43b05c390aaae2210, type: 3}
-  - {fileID: 582419826018860142, guid: 02275e1f84b36af43b05c390aaae2210, type: 3}
+  - {fileID: 8021857429149576427, guid: 3ceaf017562216647aca6523b6212f2d, type: 3}
+  - {fileID: 8021857429149576427, guid: 29c88b1ebf7b0674cb76d7a6cb471cae, type: 3}
+  - {fileID: 8021857429149576427, guid: 72a5fca0c5ac6234daa5aebc6124d2d5, type: 3}
   isGaming: 1
   isLiving: 1
 --- !u!1 &167268767

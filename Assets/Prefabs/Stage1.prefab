@@ -564,7 +564,7 @@ GameObject:
   - component: {fileID: 118436816038031245}
   - component: {fileID: 4524344994196200632}
   - component: {fileID: 4273796309470329338}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Square
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -1068,6 +1068,10 @@ MonoBehaviour:
   jumpForce: 13
   moveSpeed: 4
   maxAirDodge: 1
+  groundRayDistance: 0.1
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!1 &6846370206183451936
 GameObject:
   m_ObjectHideFlags: 0
@@ -1110,7 +1114,7 @@ GameObject:
   - component: {fileID: 4627322073813030191}
   - component: {fileID: 3271943363904734262}
   - component: {fileID: 1590216270648029381}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Square (1)
   m_TagString: Ground
   m_Icon: {fileID: 0}

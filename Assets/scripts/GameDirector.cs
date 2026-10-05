@@ -144,7 +144,7 @@ public class GameDirector : MonoBehaviour
             RankImage.sprite = RankSprites[4];
         }
         int stageNum = DontDestroyDirector.Instance.nowStage;
-        if (deathCount == 1 && stageNum == 1 && PlayerPrefs.GetInt("isStory", 1) == 1)
+        if (deathCount == 0 && stageNum == 1 && PlayerPrefs.GetInt("isStory", 1) == 1)
         {
             StartCoroutine(FirstDeathTalk());
         }
@@ -323,10 +323,24 @@ public class GameDirector : MonoBehaviour
                 }
                 break;
                 case 3:
-                yield return StartCoroutine(GenerateTalk("よくやっておるのぉ" , 2, "Goddess", "smile"));
-                yield return StartCoroutine(GenerateTalk("もうなんか爆発するの慣れてきたよ..." , 1, "Player", "confused"));
-                yield return StartCoroutine(GenerateTalk("次はステージに" , 2, "Goddess", "smile"));
-                break;
+                if (deathCount == 0)
+                {
+                    yield return StartCoroutine(GenerateTalk("よくやっておるのぉ", 2, "Goddess", "smile"));
+                    yield return StartCoroutine(GenerateTalk("もうなんか爆発するの慣れてきたよ...", 1, "Player", "confused"));
+                    yield return StartCoroutine(GenerateTalk("次はステージに針が接地されているようじゃぞ？", 2, "Goddess", "smile"));
+                    yield return StartCoroutine(GenerateTalk("それにこの配置は...クククッ", 2, "Goddess", "smile"));
+                    yield return StartCoroutine(GenerateTalk("練習は終わりのようじゃな...", 2, "Goddess", "smile"));
+                }
+                    break;
+            case 4:
+                if (deathCount == 0)
+                {
+                    yield return StartCoroutine(GenerateTalk("次は敵が攻撃もしてくるようじゃな", 2, "Goddess", "smile"));
+                    yield return StartCoroutine(GenerateTalk("なんかどんどん複雑になってない？", 1, "Player", "confused"));
+                    yield return StartCoroutine(GenerateTalk("まあより高度な能力を持った”ボス”に近づいとるんじゃろ", 2, "Goddess", "smile"));
+                    yield return StartCoroutine(GenerateTalk("がんばれ！", 2, "Goddess", "smile"));
+                }
+                    break;
             case 5:
                 if(deathCount == 0) { 
                 yield return StartCoroutine(GenerateTalk("いや～長かった旅もここでおしまいじゃのう" , 2, "Goddess", "smile"));

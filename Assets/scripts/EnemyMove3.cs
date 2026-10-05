@@ -92,7 +92,16 @@ public class EnemyMove3 : MonoBehaviour
     private void ExecuteAttack()
     {
         isAttack = true;
-        Vector3 spawnPosition = transform.position + new Vector3(offsetX, offsetY, 0);
+        Vector3 spawnPosition;
+        if (player.position.x - transform.position.x <= 0)
+        {
+            spawnPosition = transform.position + new Vector3(offsetX, offsetY, 0);
+
+        }
+        else
+        {
+            spawnPosition = transform.position + new Vector3(-offsetX, offsetY, 0);
+        }
         // 自分+オフセットの位置にAttackEffectを生成
         if (attackEffect != null)
         {
