@@ -15,12 +15,12 @@ MonoBehaviour:
   characterName: Goddess
   expressions:
   - expressionName: smile
-    sprite: {fileID: 785521257, guid: 6b72b55ecbd0e4449804d77a3edfd52d, type: 3}
+    sprite: {fileID: -6323200030155817464, guid: 1471ca0245cf61044b45490b79c67df2, type: 3}
   - expressionName: suprised
-    sprite: {fileID: -1968521695, guid: 6b72b55ecbd0e4449804d77a3edfd52d, type: 3}
+    sprite: {fileID: 5082681255122872846, guid: 1471ca0245cf61044b45490b79c67df2, type: 3}
   - expressionName: angry
-    sprite: {fileID: 355218553, guid: 6b72b55ecbd0e4449804d77a3edfd52d, type: 3}
+    sprite: {fileID: 6341063885809409815, guid: 1471ca0245cf61044b45490b79c67df2, type: 3}
   - expressionName: confused
-    sprite: {fileID: -1754386540, guid: 6b72b55ecbd0e4449804d77a3edfd52d, type: 3}
+    sprite: {fileID: -3326451086937270477, guid: 1471ca0245cf61044b45490b79c67df2, type: 3}
   - expressionName: mystery
-    sprite: {fileID: 1231157469, guid: 6b72b55ecbd0e4449804d77a3edfd52d, type: 3}
+    sprite: {fileID: -6072123514116675459, guid: 1471ca0245cf61044b45490b79c67df2, type: 3}

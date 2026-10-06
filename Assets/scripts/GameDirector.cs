@@ -20,7 +20,6 @@ public class GameDirector : MonoBehaviour
     [Header("参照")]
     [SerializeField] private GameObject PausePanel;
     [SerializeField] private GameObject ClearPanel;
-    [SerializeField] private GameObject StagePanel;
     [SerializeField] private GameObject FadeImage;
     [SerializeField] private GameObject TalkPanel;
     [SerializeField] private GameObject TalkBox;
@@ -60,7 +59,6 @@ public class GameDirector : MonoBehaviour
         //表示の初期化
         PausePanel.SetActive(false);
         ClearPanel.SetActive(false);
-        StagePanel.SetActive(false);
         TalkPanel.SetActive(false);
         FadeImage.SetActive(false);
         countDownTimer = 0;
@@ -114,6 +112,7 @@ public class GameDirector : MonoBehaviour
     public void Quit()
     {
         Time.timeScale = 1f;
+        DontDestroyDirector.Instance.deathCount = 0;
         SceneManager.LoadScene("TitleScene");
     }
 
@@ -127,7 +126,8 @@ public class GameDirector : MonoBehaviour
     //クリアを検知したらパネルを表示（Playerから呼び出し）
     public void Clear()
     {
-         DeathCountText.text = $"{deathCount}回";
+        bool isPaused = false;
+        DeathCountText.text = $"{deathCount}回";
         if(deathCount >= 0 && deathCount <= 5)
         {
             RankImage.sprite = RankSprites[0];
@@ -147,6 +147,9 @@ public class GameDirector : MonoBehaviour
         if (deathCount == 0 && stageNum == 1 && PlayerPrefs.GetInt("isStory", 1) == 1)
         {
             StartCoroutine(FirstDeathTalk());
+        }else if (stageNum == 5 && PlayerPrefs.GetInt("isStory", 1) == 1)
+        {
+
         }
             ClearPanel.SetActive(true);
     }
@@ -163,7 +166,7 @@ public class GameDirector : MonoBehaviour
             yield return StartCoroutine(FirstDeathTalk());
             SceneManager.LoadScene("GameScene");
         }
-        else { 
+        else {
             yield return new WaitForSeconds(1f);
             SceneManager.LoadScene("GameScene");
             yield break;

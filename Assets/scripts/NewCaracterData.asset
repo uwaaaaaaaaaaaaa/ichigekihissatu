@@ -15,10 +15,10 @@ MonoBehaviour:
   characterName: Player
   expressions:
   - expressionName: smile
-    sprite: {fileID: -5509322083395803804, guid: 6b72b55ecbd0e4449804d77a3edfd52d, type: 3}
+    sprite: {fileID: -3251141170098560771, guid: e0c01f8a78ae047418d2c6ce62491463, type: 3}
   - expressionName: suprised
-    sprite: {fileID: -396549679, guid: 6b72b55ecbd0e4449804d77a3edfd52d, type: 3}
+    sprite: {fileID: 7411704693781141431, guid: e0c01f8a78ae047418d2c6ce62491463, type: 3}
   - expressionName: angry
-    sprite: {fileID: -598951346, guid: 6b72b55ecbd0e4449804d77a3edfd52d, type: 3}
+    sprite: {fileID: 5481207596606760123, guid: e0c01f8a78ae047418d2c6ce62491463, type: 3}
   - expressionName: confused
-    sprite: {fileID: -1052869623, guid: 6b72b55ecbd0e4449804d77a3edfd52d, type: 3}
+    sprite: {fileID: -47267378169827193, guid: e0c01f8a78ae047418d2c6ce62491463, type: 3}

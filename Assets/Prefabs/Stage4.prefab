@@ -2689,10 +2689,10 @@ MonoBehaviour:
   jumpForce: 13
   moveSpeed: 4
   maxAirDodge: 1
-  groundRayDistance: 0.1
+  groundRayDistance: 0.8
   groundLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 8
 --- !u!1 &7656443686241216433
 GameObject:
   m_ObjectHideFlags: 0
@@ -4286,6 +4286,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 8946690566593396980}
     m_Modifications:
+    - target: {fileID: 5573745404486526636, guid: f1817f647a895de419081fc6f93f5266, type: 3}
+      propertyPath: m_Constraints
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 7202355588331159104, guid: f1817f647a895de419081fc6f93f5266, type: 3}
       propertyPath: m_LocalPosition.x
       value: 84.9086

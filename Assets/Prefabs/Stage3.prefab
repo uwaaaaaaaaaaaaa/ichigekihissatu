@@ -4754,10 +4754,10 @@ MonoBehaviour:
   jumpForce: 13
   moveSpeed: 5
   maxAirDodge: 1
-  groundRayDistance: 0.1
+  groundRayDistance: 0.8
   groundLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 8
 --- !u!1 &6607430627202717258
 GameObject:
   m_ObjectHideFlags: 0

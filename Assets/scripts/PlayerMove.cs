@@ -114,6 +114,7 @@ public class PlayerMove : MonoBehaviour
         if (collision.gameObject.CompareTag("Boss"))
         {
             Instantiate(ExplosionEffect);
+            GameDirector.Instance.isGaming = false;
             gameDirector.Clear();
         }
     }
