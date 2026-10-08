@@ -17,6 +17,7 @@ public class PlayerMove : MonoBehaviour
     [SerializeField] private float jumpForce = 3f;
     [SerializeField] private float moveSpeed = 2f;
     [SerializeField] private int maxAirDodge = 1;
+    [SerializeField] private float dodgeSpeed = 2f;
 
     [Header("ê⁄ínîªíË")]
     [SerializeField] private float groundRayDistance = 0.1f;
@@ -129,7 +130,7 @@ public class PlayerMove : MonoBehaviour
     IEnumerator AirDodge()
     {
         rb.gravityScale = 0;
-        rb.linearVelocity = new Vector2(move.x * moveSpeed * 2f, 0f);
+        rb.linearVelocity = new Vector2(move.x * dodgeSpeed * 2f, 0f);
 
         yield return new WaitForSeconds(0.1f);
 

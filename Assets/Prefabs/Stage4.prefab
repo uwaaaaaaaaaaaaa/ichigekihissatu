@@ -133,7 +133,7 @@ PolygonCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.75, y: 0.62}
+    oldSize: {x: 0.69, y: 0.65}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -275,7 +275,7 @@ PolygonCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.75, y: 0.62}
+    oldSize: {x: 0.69, y: 0.65}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -555,7 +555,7 @@ PolygonCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.75, y: 0.62}
+    oldSize: {x: 0.69, y: 0.65}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -700,7 +700,7 @@ PolygonCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.75, y: 0.62}
+    oldSize: {x: 0.69, y: 0.65}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -842,7 +842,7 @@ PolygonCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.75, y: 0.62}
+    oldSize: {x: 0.69, y: 0.65}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -1188,7 +1188,7 @@ Transform:
   m_GameObject: {fileID: 2667037159998126916}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 16.2, y: -3.7, z: 0}
+  m_LocalPosition: {x: 15.49, y: -3.7, z: 0}
   m_LocalScale: {x: 0.92, y: 0.93, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1248,7 +1248,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 2
-  m_Size: {x: 30, y: 1}
+  m_Size: {x: 32, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -1292,12 +1292,12 @@ BoxCollider2D:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 0.92, y: 0.93}
-    newSize: {x: 30, y: 1}
+    newSize: {x: 32, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 2
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 30, y: 1}
+  m_Size: {x: 32, y: 1}
   m_EdgeRadius: 0
 --- !u!1 &3336022349563125714
 GameObject:
@@ -1567,7 +1567,7 @@ PolygonCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.75, y: 0.62}
+    oldSize: {x: 0.69, y: 0.65}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -1709,7 +1709,7 @@ PolygonCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.75, y: 0.62}
+    oldSize: {x: 0.69, y: 0.65}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -2021,7 +2021,7 @@ PolygonCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.75, y: 0.62}
+    oldSize: {x: 0.69, y: 0.65}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -2439,7 +2439,7 @@ PolygonCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.75, y: 0.62}
+    oldSize: {x: 0.69, y: 0.65}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -2825,8 +2825,9 @@ MonoBehaviour:
   gameDirector: {fileID: 0}
   ExplosionEffect: {fileID: 7124340218753288473, guid: 95b07575da0b40d40b1436005142a239, type: 3}
   jumpForce: 13
-  moveSpeed: 4
+  moveSpeed: 6
   maxAirDodge: 1
+  dodgeSpeed: 4
   groundRayDistance: 1.1
   groundLayer:
     serializedVersion: 2
@@ -2967,7 +2968,7 @@ BoxCollider2D:
     drawMode: 2
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 14.5, y: 6}
   m_EdgeRadius: 0
 --- !u!1 &7656443686241216433
 GameObject:
@@ -3099,7 +3100,7 @@ PolygonCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.75, y: 0.62}
+    oldSize: {x: 0.69, y: 0.65}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -3729,7 +3730,7 @@ PolygonCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.75, y: 0.62}
+    oldSize: {x: 0.69, y: 0.65}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -4044,7 +4045,7 @@ Transform:
   m_GameObject: {fileID: 9002960418389419534}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 16.2, y: -6.9, z: 0}
+  m_LocalPosition: {x: 15.49, y: -6.9, z: 0}
   m_LocalScale: {x: 0.92, y: 0.93, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4104,7 +4105,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 2
-  m_Size: {x: 30, y: 6}
+  m_Size: {x: 32, y: 6}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -4148,12 +4149,12 @@ BoxCollider2D:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 1, y: 1}
-    newSize: {x: 30, y: 6}
+    newSize: {x: 32, y: 6}
     adaptiveTilingThreshold: 0.5
     drawMode: 2
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 30, y: 6}
+  m_Size: {x: 32, y: 6}
   m_EdgeRadius: 0
 --- !u!1 &9003714087097147033
 GameObject:
@@ -4285,7 +4286,7 @@ PolygonCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.75, y: 0.62}
+    oldSize: {x: 0.69, y: 0.65}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -4433,7 +4434,7 @@ BoxCollider2D:
     drawMode: 2
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 14.5, y: 1}
   m_EdgeRadius: 0
 --- !u!1 &9070357331758899534
 GameObject:
@@ -5115,11 +5116,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -7800261237406904861, guid: c97500697cc5083448ce9da34a88a8e7, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.x
-      value: 0.75
+      value: 0.69
       objectReference: {fileID: 0}
     - target: {fileID: -7800261237406904861, guid: c97500697cc5083448ce9da34a88a8e7, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.y
-      value: 0.62
+      value: 0.65
       objectReference: {fileID: 0}
     - target: {fileID: 797570514400199591, guid: c97500697cc5083448ce9da34a88a8e7, type: 3}
       propertyPath: m_LocalPosition.x
@@ -5193,11 +5194,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -7800261237406904861, guid: c97500697cc5083448ce9da34a88a8e7, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.x
-      value: 0.75
+      value: 0.69
       objectReference: {fileID: 0}
     - target: {fileID: -7800261237406904861, guid: c97500697cc5083448ce9da34a88a8e7, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.y
-      value: 0.62
+      value: 0.65
       objectReference: {fileID: 0}
     - target: {fileID: 797570514400199591, guid: c97500697cc5083448ce9da34a88a8e7, type: 3}
       propertyPath: m_LocalPosition.x
@@ -5271,11 +5272,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -7800261237406904861, guid: c97500697cc5083448ce9da34a88a8e7, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.x
-      value: 0.75
+      value: 0.69
       objectReference: {fileID: 0}
     - target: {fileID: -7800261237406904861, guid: c97500697cc5083448ce9da34a88a8e7, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.y
-      value: 0.62
+      value: 0.65
       objectReference: {fileID: 0}
     - target: {fileID: 797570514400199591, guid: c97500697cc5083448ce9da34a88a8e7, type: 3}
       propertyPath: m_LocalPosition.x
@@ -5349,11 +5350,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -7800261237406904861, guid: c97500697cc5083448ce9da34a88a8e7, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.x
-      value: 0.75
+      value: 0.69
       objectReference: {fileID: 0}
     - target: {fileID: -7800261237406904861, guid: c97500697cc5083448ce9da34a88a8e7, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.y
-      value: 0.62
+      value: 0.65
       objectReference: {fileID: 0}
     - target: {fileID: 797570514400199591, guid: c97500697cc5083448ce9da34a88a8e7, type: 3}
       propertyPath: m_LocalPosition.x
@@ -5427,11 +5428,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -7800261237406904861, guid: c97500697cc5083448ce9da34a88a8e7, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.x
-      value: 0.75
+      value: 0.69
       objectReference: {fileID: 0}
     - target: {fileID: -7800261237406904861, guid: c97500697cc5083448ce9da34a88a8e7, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.y
-      value: 0.62
+      value: 0.65
       objectReference: {fileID: 0}
     - target: {fileID: 797570514400199591, guid: c97500697cc5083448ce9da34a88a8e7, type: 3}
       propertyPath: m_LocalPosition.x
@@ -5691,11 +5692,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -7800261237406904861, guid: c97500697cc5083448ce9da34a88a8e7, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.x
-      value: 0.75
+      value: 0.69
       objectReference: {fileID: 0}
     - target: {fileID: -7800261237406904861, guid: c97500697cc5083448ce9da34a88a8e7, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.y
-      value: 0.62
+      value: 0.65
       objectReference: {fileID: 0}
     - target: {fileID: 797570514400199591, guid: c97500697cc5083448ce9da34a88a8e7, type: 3}
       propertyPath: m_LocalPosition.x

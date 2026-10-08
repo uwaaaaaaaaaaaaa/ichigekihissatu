@@ -6303,8 +6303,9 @@ MonoBehaviour:
   gameDirector: {fileID: 0}
   ExplosionEffect: {fileID: 7124340218753288473, guid: 95b07575da0b40d40b1436005142a239, type: 3}
   jumpForce: 13
-  moveSpeed: 5
+  moveSpeed: 6
   maxAirDodge: 1
+  dodgeSpeed: 4
   groundRayDistance: 1.1
   groundLayer:
     serializedVersion: 2

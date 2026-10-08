@@ -137,11 +137,11 @@ public class GameDirector : MonoBehaviour
         }
         else if (deathCount >= 11 && deathCount <= 15)
         {
-            RankImage.sprite = RankSprites[3];
+            RankImage.sprite = RankSprites[2];
         }
         else if (deathCount >= 16)
         {
-            RankImage.sprite = RankSprites[4];
+            RankImage.sprite = RankSprites[3];
         }
         int stageNum = DontDestroyDirector.Instance.nowStage;
         if (deathCount == 0 && stageNum == 1 && PlayerPrefs.GetInt("isStory", 1) == 1)
