@@ -41,6 +41,9 @@ public class PlayerMove : MonoBehaviour
     private float defaultGravity;
     private string currentAnimation = "";
 
+    //タイムアップの際に連続で爆発しないようにする変数
+    private bool expoded;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -60,6 +63,8 @@ public class PlayerMove : MonoBehaviour
             audioSource = GetComponent<AudioSource>();
 
         ChangeAnimation("playerIdle");
+
+        expoded = false;
     }
 
     void Update()
@@ -98,8 +103,9 @@ public class PlayerMove : MonoBehaviour
 
         UpdateAnimation();
 
-        if (!GameDirector.Instance.isLiving)
+        if (!GameDirector.Instance.isLiving && expoded == false)
         {
+            expoded = true;
             Instantiate(ExplosionEffect);
         }
     }
