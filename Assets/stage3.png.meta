@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 48d365e7952a3d84982cba0d099a0dc3
+guid: ad9be6093598e704cb29adff99c98068
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 3511996523978390141
-    second: Rank_0
+      213: -6964565648693895049
+    second: stage3_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,89 +113,23 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Rank_0
+      name: stage3_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 1720
-        width: 300
-        height: 200
+        y: 0
+        width: 480
+        height: 315
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: d7a73203b3e1db030800000000000000
-      internalID: 3511996523978390141
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Rank_1
-      rect:
-        serializedVersion: 2
-        x: 300
-        y: 1720
-        width: 300
-        height: 200
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 073e0c8330bc5b5458d8c935d7abac98
-      internalID: -354949481
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Rank_2
-      rect:
-        serializedVersion: 2
-        x: 600
-        y: 1720
-        width: 300
-        height: 200
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 358b5e9c940e24648b054b7f8c656f0b
-      internalID: 501929998
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Rank_3
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 1520
-        width: 300
-        height: 200
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 511627a569c80634aae043b7cc17305e
-      internalID: -149060111
+      spriteID: 77066be3174e85f90800000000000000
+      internalID: -6964565648693895049
       vertices: []
       indices: 
       edges: []
@@ -204,7 +138,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 8ce9b9f0fac3eec40a7c3c5d1d6a1e66
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -212,38 +146,9 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     spriteCustomMetadata:
-      entries:
-      - key: SpriteEditor.SliceSettings
-        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":300.0,"y":200.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
+      entries: []
     nameFileIdTable:
-      Rank_0: 3511996523978390141
-      Rank_1: -354949481
-      Rank_10: -1624929024
-      Rank_11: 930831419
-      Rank_12: 1654412098
-      Rank_13: 1591271261
-      Rank_14: -1890202814
-      Rank_15: 1220271809
-      Rank_16: -1185456850
-      Rank_17: -1414257489
-      Rank_18: -152686031
-      Rank_19: -1224407627
-      Rank_2: 501929998
-      Rank_20: 1594870765
-      Rank_21: 1946286957
-      Rank_22: -1113725834
-      Rank_23: -701747077
-      Rank_24: -2145664429
-      Rank_25: 93894596
-      Rank_26: 465520326
-      Rank_27: 792817735
-      Rank_3: -149060111
-      Rank_4: 2130741887
-      Rank_5: 325867259
-      Rank_6: -376721231
-      Rank_7: -1098241547
-      Rank_8: 1821460279
-      Rank_9: -969637630
+      stage3_0: -6964565648693895049
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
