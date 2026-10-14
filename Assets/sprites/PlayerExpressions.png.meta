@@ -1,0 +1,328 @@
+fileFormatVersion: 2
+guid: e0c01f8a78ae047418d2c6ce62491463
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -3251141170098560771
+    second: PlayerExpressions_0
+  - first:
+      213: 7411704693781141431
+    second: PlayerExpressions_1
+  - first:
+      213: 5481207596606760123
+    second: PlayerExpressions_2
+  - first:
+      213: -47267378169827193
+    second: PlayerExpressions_3
+  - first:
+      213: -8693841702185931289
+    second: PlayerExpressions_4
+  - first:
+      213: 3657473282636643399
+    second: PlayerExpressions_5
+  - first:
+      213: -2925528719108773958
+    second: PlayerExpressions_6
+  - first:
+      213: 6367515910068348851
+    second: PlayerExpressions_7
+  - first:
+      213: 9197907414133295568
+    second: PlayerExpressions_8
+  - first:
+      213: 8513165340794641861
+    second: PlayerExpressions_9
+  - first:
+      213: -8556562844654247845
+    second: PlayerExpressions_10
+  - first:
+      213: -2896852763026075827
+    second: PlayerExpressions_11
+  - first:
+      213: -3792869497464371198
+    second: PlayerExpressions_12
+  - first:
+      213: -2269260279969013525
+    second: PlayerExpressions_13
+  - first:
+      213: -8916932411654811609
+    second: PlayerExpressions_14
+  - first:
+      213: -7239744579794835643
+    second: PlayerExpressions_15
+  - first:
+      213: -1098374461064147429
+    second: PlayerExpressions_16
+  - first:
+      213: 6674589503080157092
+    second: PlayerExpressions_17
+  - first:
+      213: -8770272369166364499
+    second: PlayerExpressions_18
+  - first:
+      213: -3972692296026130277
+    second: PlayerExpressions_19
+  - first:
+      213: 2922516465776039156
+    second: PlayerExpressions_20
+  - first:
+      213: 8380254220409693323
+    second: PlayerExpressions_21
+  - first:
+      213: -855477894045244207
+    second: PlayerExpressions_22
+  - first:
+      213: -2201316471331683812
+    second: PlayerExpressions_23
+  - first:
+      213: -5174363582944983065
+    second: PlayerExpressions_24
+  - first:
+      213: -8454528623122107170
+    second: PlayerExpressions_25
+  - first:
+      213: 597190761691137831
+    second: PlayerExpressions_26
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: PlayerExpressions_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 261
+        width: 320
+        height: 450
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: df0a0a1c450a1e2d0800000000000000
+      internalID: -3251141170098560771
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayerExpressions_1
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 261
+        width: 320
+        height: 450
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7b79bec662aabd660800000000000000
+      internalID: 7411704693781141431
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayerExpressions_2
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 261
+        width: 320
+        height: 450
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bb42be7b449211c40800000000000000
+      internalID: 5481207596606760123
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayerExpressions_3
+      rect:
+        serializedVersion: 2
+        x: 960
+        y: 261
+        width: 320
+        height: 450
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 78039bae192185ff0800000000000000
+      internalID: -47267378169827193
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayerExpressions_4
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 261
+        width: 320
+        height: 450
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7edeab7a805495780800000000000000
+      internalID: -8693841702185931289
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 128bc9de727ace0479f7cf3de0a850b9
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":320.0,"y":450.0},"gridSpriteOffset":{"x":0.0,"y":260.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
+    nameFileIdTable:
+      PlayerExpressions_0: -3251141170098560771
+      PlayerExpressions_1: 7411704693781141431
+      PlayerExpressions_2: 5481207596606760123
+      PlayerExpressions_3: -47267378169827193
+      PlayerExpressions_4: -8693841702185931289
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

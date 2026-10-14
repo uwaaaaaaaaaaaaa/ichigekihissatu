@@ -36,12 +36,16 @@ public class AudioManager : MonoBehaviour
 
     public void SetBGMVolume(float volume)
     {
+        Debug.Log($"SetBGMVolume 呼び出し：{volume}");
+
         ApplyVolume("BGMVolume", volume);
         PlayerPrefs.SetFloat(BGMVolumeKey, volume);
     }
 
     public void SetSFXVolume(float volume)
     {
+        Debug.Log($"SetSFXVolume 呼び出し：{volume}");
+
         ApplyVolume("SFXVolume", volume);
         PlayerPrefs.SetFloat(SFXVolumeKey, volume);
     }
@@ -50,7 +54,7 @@ public class AudioManager : MonoBehaviour
     {
         if (audioMixer == null)
         {
-            Debug.LogError("AudioMixerが設定されていません！");
+            Debug.LogError("AudioMixerが設定されていない！");
             return;
         }
 
@@ -58,12 +62,12 @@ public class AudioManager : MonoBehaviour
             ? -80f
             : Mathf.Log10(volume) * 20f;
 
-        if (!audioMixer.SetFloat(parameterName, dB))
-        {
-            Debug.LogError(
-                $"AudioMixerのパラメータ '{parameterName}' が見つかりません！"
-            );
-        }
+        bool success = audioMixer.SetFloat(parameterName, dB);
+
+        Debug.Log(
+            $"Mixer設定：{parameterName}, 入力={volume:F2}, " +
+            $"dB={dB:F2}, 成功={success}"
+        );
     }
 
     public float GetBGMVolume()

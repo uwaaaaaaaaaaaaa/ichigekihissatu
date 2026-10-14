@@ -45,6 +45,8 @@ public class GameDirector : MonoBehaviour
     private int deathCount;
     //制限時間用の変数
     private float countDownTimer = 0;
+    //処理の複数回実行によるフリーズ防止
+    private bool isRestarting;
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -67,7 +69,8 @@ public class GameDirector : MonoBehaviour
         isLiving = true;
         StageGenerate(DontDestroyDirector.Instance.nowStage);
         deathCount = DontDestroyDirector.Instance.deathCount;
-        if(PlayerPrefs.GetInt("isStory", 1) == 1) { 
+        isRestarting = false;
+        if (PlayerPrefs.GetInt("isStory", 1) == 1) { 
             StartCoroutine(TalkingPhase());
         }else
          {
@@ -91,7 +94,7 @@ public class GameDirector : MonoBehaviour
             int minutes = totalSeconds / 60;
             int seconds = totalSeconds % 60;
             CountDownText.text = $"{minutes:00}:{seconds:00}";
-            if(countDownTimer < 0)
+            if(countDownTimer < 0 && isLiving == true)
             {
                 isLiving = false;
                 Restart();
@@ -119,7 +122,15 @@ public class GameDirector : MonoBehaviour
     //リスタート用のコルーチン開始用（Playerから呼び出し）
     public void Restart()
     {
+        // すでにリスタート処理中なら何もしない
+        if (isRestarting) return;
+
+        isRestarting = true;
+        isGaming = false;
+        isLiving = false;
+
         DontDestroyDirector.Instance.deathCount++;
+
         StartCoroutine(ReStartCoroutine());
     }
 

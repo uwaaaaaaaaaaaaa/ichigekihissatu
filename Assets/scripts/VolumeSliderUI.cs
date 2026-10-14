@@ -16,5 +16,20 @@ public class VolumeSliderUI : MonoBehaviour
         sfxSlider.SetValueWithoutNotify(
             AudioManager.Instance.GetSFXVolume()
         );
+
+        // イベントをコードから登録
+        bgmSlider.onValueChanged.RemoveListener(
+            AudioManager.Instance.SetBGMVolume
+        );
+        bgmSlider.onValueChanged.AddListener(
+            AudioManager.Instance.SetBGMVolume
+        );
+
+        sfxSlider.onValueChanged.RemoveListener(
+            AudioManager.Instance.SetSFXVolume
+        );
+        sfxSlider.onValueChanged.AddListener(
+            AudioManager.Instance.SetSFXVolume
+        );
     }
 }

@@ -33,6 +33,10 @@ public class PlayerMove : MonoBehaviour
     [Header("向きの反転スプライト")]
     [SerializeField] private SpriteRenderer spriteRenderer;
 
+    [Header("空中移動")]
+    [SerializeField, Range(0f, 1f)]
+    private float airMoveMultiplier = 0.5f;
+
     private Rigidbody2D rb;
     private Vector2 move;
     private bool isGround;
@@ -42,7 +46,7 @@ public class PlayerMove : MonoBehaviour
     private string currentAnimation = "";
 
     //タイムアップの際に連続で爆発しないようにする変数
-    private bool expoded;
+    private bool exploded;
 
     void Start()
     {
@@ -64,7 +68,7 @@ public class PlayerMove : MonoBehaviour
 
         ChangeAnimation("playerIdle");
 
-        expoded = false;
+        exploded = false;
     }
 
     void Update()
@@ -76,8 +80,26 @@ public class PlayerMove : MonoBehaviour
 
         move = moveAction.action.ReadValue<Vector2>();
 
-        transform.position +=
-            Vector3.right * move.x * moveSpeed * Time.deltaTime;
+
+        if (!isRolling)
+        {
+            // 空中なら移動速度に倍率をかける
+            float currentMoveSpeed = isGround
+                ? moveSpeed
+                : moveSpeed * airMoveMultiplier;
+
+            // 反対方向の入力で空中回避の慣性をキャンセル
+            if (Mathf.Abs(move.x) > 0.01f &&
+                Mathf.Abs(rb.linearVelocity.x) > 0.01f &&
+                Mathf.Sign(move.x) != Mathf.Sign(rb.linearVelocity.x))
+            {
+                rb.linearVelocity = new Vector2(0f, rb.linearVelocity.y);
+            }
+
+            transform.position +=
+                Vector3.right * move.x * currentMoveSpeed * Time.deltaTime;
+        }
+
 
         // 移動方向に応じて左右反転
         if (spriteRenderer != null)
@@ -103,9 +125,9 @@ public class PlayerMove : MonoBehaviour
 
         UpdateAnimation();
 
-        if (!GameDirector.Instance.isLiving && expoded == false)
+        if (!GameDirector.Instance.isLiving && exploded == false)
         {
-            expoded = true;
+            exploded = true;
             Instantiate(ExplosionEffect);
         }
     }
@@ -154,33 +176,50 @@ public class PlayerMove : MonoBehaviour
         animator.Play(animationName, 0, 0f);
     }
 
+
     private void CheckGround()
     {
-        RaycastHit2D hit = Physics2D.Raycast(
-            transform.position,
+        // プレイヤーの左右から下向きにRayを飛ばす
+        float rayOffset = 0.2f;
+
+        Vector2 leftOrigin = (Vector2)transform.position
+            + Vector2.left * rayOffset;
+
+        Vector2 rightOrigin = (Vector2)transform.position
+            + Vector2.right * rayOffset;
+
+        RaycastHit2D leftHit = Physics2D.Raycast(
+            leftOrigin,
             Vector2.down,
             groundRayDistance,
             groundLayer
         );
 
-        if (hit.collider != null)
-        {
-            if (!isGround)
-                currentAirDodge = 0;
+        RaycastHit2D rightHit = Physics2D.Raycast(
+            rightOrigin,
+            Vector2.down,
+            groundRayDistance,
+            groundLayer
+        );
 
-            isGround = true;
-        }
-        else
+        bool wasGround = isGround;
+        isGround = leftHit.collider != null
+                || rightHit.collider != null;
+
+        // 着地したら空中回避回数をリセット
+        if (isGround && !wasGround)
         {
-            isGround = false;
+            currentAirDodge = 0;
         }
     }
 
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Enemy") ||
-            collision.gameObject.CompareTag("Attack"))
+        if ((collision.gameObject.CompareTag("Enemy") ||
+            collision.gameObject.CompareTag("Attack")) && exploded == false)
         {
+            exploded = true;
             gameDirector.Restart();
             Instantiate(ExplosionEffect);
         }
@@ -190,8 +229,9 @@ public class PlayerMove : MonoBehaviour
             StartCoroutine(DestroyOffset());
         }
 
-        if (collision.gameObject.CompareTag("Boss"))
+        if (collision.gameObject.CompareTag("Boss") && exploded == false)
         {
+            exploded = true;
             Instantiate(ExplosionEffect);
             GameDirector.Instance.isGaming = false;
             gameDirector.Clear();

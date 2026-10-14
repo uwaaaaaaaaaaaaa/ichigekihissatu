@@ -174,7 +174,7 @@ MonoBehaviour:
   animator: {fileID: 6820285671115785960}
   spriteRenderer: {fileID: 5411129474885591414}
   moveSpeed: 3
-  checkRadius: 1.6
+  checkRadius: 2
   attackCharge: 0.7
   attackDuration: 2
   offsetX: -1

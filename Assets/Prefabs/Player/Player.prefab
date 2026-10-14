@@ -180,15 +180,16 @@ MonoBehaviour:
   jumpSound: {fileID: 8300000, guid: 16ea52b46ad5e6440b3e807d55816f8b, type: 3}
   airDodgeSound: {fileID: 8300000, guid: 412975594b0ecaf4ca02931699d60e2a, type: 3}
   jumpForce: 13
-  moveSpeed: 6
+  moveSpeed: 7
   maxAirDodge: 1
-  dodgeSpeed: 4
+  dodgeSpeed: 6
   groundRayDistance: 1.1
   groundLayer:
     serializedVersion: 2
     m_Bits: 8
   rollingDuration: 0.35
   spriteRenderer: {fileID: 0}
+  airMoveMultiplier: 0.6
 --- !u!95 &3750390180880076181
 Animator:
   serializedVersion: 7
