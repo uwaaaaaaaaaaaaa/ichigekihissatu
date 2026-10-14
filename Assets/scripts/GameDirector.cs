@@ -29,6 +29,8 @@ public class GameDirector : MonoBehaviour
     [SerializeField] private Image leftCharacterImage;
     [SerializeField] private Image rightCharactorImage;
     [SerializeField] private Text TalkText;
+    [SerializeField] private Text PauseDeathText;
+    [SerializeField] private Text PauseStageText;
     [SerializeField] private CameraController cameraController;
 
     [Header("クリア後の評価表示")]
@@ -105,6 +107,8 @@ public class GameDirector : MonoBehaviour
     //ポーズメニューを表示（ボタンから呼び出し）
     public void Pause()
     {
+        PauseDeathText.text = $"デス数：{DontDestroyDirector.Instance.deathCount}";
+        PauseStageText.text = $"Stage{DontDestroyDirector.Instance.nowStage}";
         bool isPaused = !PausePanel.activeSelf;
         PausePanel.SetActive(!PausePanel.activeSelf);
         //ポーズ中は時間を止める
