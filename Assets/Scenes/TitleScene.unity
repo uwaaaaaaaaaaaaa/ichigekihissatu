@@ -1565,6 +1565,7 @@ GameObject:
   - component: {fileID: 785291629}
   - component: {fileID: 785291628}
   - component: {fileID: 785291631}
+  - component: {fileID: 785291632}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1690,6 +1691,18 @@ MonoBehaviour:
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
   m_Version: 2
+--- !u!114 &785291632
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 785291627}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2a87a68fbb61cf42883ef9aa71c2b50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CameraRectController
 --- !u!1 &812460870
 GameObject:
   m_ObjectHideFlags: 0
