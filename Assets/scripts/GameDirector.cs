@@ -4,6 +4,7 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using UnityEngine.InputSystem;
 using UnityEditor;
+using UnityEngine.Assertions.Must;
 
 public class GameDirector : MonoBehaviour
 {
@@ -83,14 +84,14 @@ public class GameDirector : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Keyboard.current != null && Keyboard.current.escapeKey.wasPressedThisFrame)
+        if(Keyboard.current != null && Keyboard.current.escapeKey.wasPressedThisFrame && isGaming)
         {
             Pause();
         }
         if(isGaming && countDownTimer > 0)
         {
             countDownTimer -= Time.deltaTime;
-
+            DontDestroyDirector.Instance.totalTime += Time.deltaTime;
             //分:秒に変換する部分
             int totalSeconds = Mathf.CeilToInt(Mathf.Max(0, countDownTimer));
             int minutes = totalSeconds / 60;
@@ -116,11 +117,19 @@ public class GameDirector : MonoBehaviour
     }
 
     //タイトルへ戻る（ボタンから呼び出し）
-    public void Quit()
+    public void Quit(int end)
     {
         Time.timeScale = 1f;
-        DontDestroyDirector.Instance.deathCount = 0;
-        SceneManager.LoadScene("TitleScene");
+        //最終ステージのポーズ画面からQuitするとクリア画面になるので対策
+        if(DontDestroyDirector.Instance.nowStage == 5 && end == 1)
+        {
+            SceneManager.LoadScene("ResultScene");
+        }
+        else
+        {
+            DontDestroyDirector.Instance.deathCount = 0;
+            SceneManager.LoadScene("TitleScene");
+        }
     }
 
     //リスタート用のコルーチン開始用（Playerから呼び出し）
@@ -134,6 +143,7 @@ public class GameDirector : MonoBehaviour
         isLiving = false;
 
         DontDestroyDirector.Instance.deathCount++;
+        DontDestroyDirector.Instance.totalDeathCount++;
 
         StartCoroutine(ReStartCoroutine());
     }
@@ -142,6 +152,16 @@ public class GameDirector : MonoBehaviour
     public void Clear()
     {
         bool isPaused = false;
+        
+        //進行状況（クリアステージ）の保存
+        if(DontDestroyDirector.Instance.nowStage > PlayerPrefs.GetInt("ClearStages", 0)) { 
+            PlayerPrefs.SetInt("ClearStages", DontDestroyDirector.Instance.nowStage);
+            PlayerPrefs.Save();
+        }
+        if (DontDestroyDirector.Instance.nowStage == 5 && PlayerPrefs.GetInt("isStory", 1) == 1)
+        {
+            StartCoroutine(LastTalk());
+        }
         DeathCountText.text = $"{deathCount}回";
         if(deathCount >= 0 && deathCount <= 5)
         {
@@ -166,6 +186,7 @@ public class GameDirector : MonoBehaviour
         {
 
         }
+
             ClearPanel.SetActive(true);
     }
 
@@ -204,6 +225,17 @@ public class GameDirector : MonoBehaviour
         TalkPanel.SetActive(false);
     }
 
+    //最終ステージクリアの後の会話
+    IEnumerator LastTalk()
+    {
+        TalkPanel.SetActive(true);
+        yield return StartCoroutine(GenerateTalk("ボス討伐おめでとう", 2, "Goddess", "smile"));
+        yield return StartCoroutine(GenerateTalk("ようやく全部終わったんだ！", 1, "Player", "smile"));
+        yield return StartCoroutine(GenerateTalk("ま、今後もモンスター出てきたらよろしくな", 2, "Goddess", "smile"));
+        yield return StartCoroutine(GenerateTalk("爆発するのはもうこりごりだー！", 1, "Player", "suprised"));
+        TalkPanel.SetActive(false);
+    }
+
     //クリア後の次のステージへ行く処理
     public void NextStage()
     {
@@ -215,7 +247,7 @@ public class GameDirector : MonoBehaviour
         }
         else
         {
-            SceneManager.LoadScene("TitleScene");
+            SceneManager.LoadScene("ResultScene");
         }
     }
 

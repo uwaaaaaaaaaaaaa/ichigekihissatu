@@ -9,6 +9,7 @@ public class TitleDirector : MonoBehaviour
     [Header("参照")]
     [SerializeField] private GameObject SettingPanel;
     [SerializeField] private GameObject StagePanel;
+    [SerializeField] private GameObject StartPanel;
     [SerializeField] private Slider VolumeSliderBGM;
     [SerializeField] private Slider VolumeSliderSE;
     [SerializeField] private Text StoryButtonText;
@@ -21,6 +22,7 @@ public class TitleDirector : MonoBehaviour
         //表示の初期化
         SettingPanel.SetActive(false);
         StagePanel.SetActive(false);
+        StartPanel.SetActive(false);
         //変数の初期化
         isStory = PlayerPrefs.GetInt("isStory", 1);
         //Sliderのボリュームの初期化
@@ -83,6 +85,20 @@ public class TitleDirector : MonoBehaviour
     public void Stages()
     {
         StagePanel.SetActive(!StagePanel.activeSelf);
+    }
+
+    //進行状況をリセットする
+    public void StageReset()
+    {
+        DontDestroyDirector.Instance.totalTime = 0;
+        DontDestroyDirector.Instance.totalDeathCount = 0;
+        PlayerPrefs.SetInt("ClearStages", 0);
+        PlayerPrefs.Save();
+    }
+
+    public void ActiveStartPanel()
+    {
+        StartPanel.SetActive(!StartPanel.activeSelf);
     }
 
     //ストーリー表示をどうするか（ボタンから呼び出し）

@@ -29,4 +29,7 @@ public class DontDestroyDirector : MonoBehaviour
     public int nowStage = 0;
     public int lastStage = 0;
 
+    //ÅŒã‚Ì‰æ–Ê‚É•\¦‚·‚é•Ï”
+    public int totalDeathCount = 0;
+    public float totalTime = 0;
 }
